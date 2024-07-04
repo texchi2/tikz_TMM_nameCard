@@ -1,0 +1,68 @@
+\documentclass[12pt]{article}
+\usepackage[paperwidth=3.5in, paperheight=2in, margin=0.1in]{geometry}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{xeCJK}
+\usepackage{fontspec}
+\usepackage{svg}
+
+% ---- Chinese characters --------------------------------------------------------
+%\usepackage{xeCJK} % for Chinese, compiling by XeLaTex
+%\usepackage{fontspec} %設定字體
+% Fandol font (the default)  not shown "內"
+\setCJKmainfont{AR PL UMing TW MBE} % AR PL UMing TW MBE or "UKai" https://www.overleaf.com/learn/latex/Questions/Which_OTF_or_TTF_fonts_are_supported_via_fontspec%3F#Chinese
+%BiauKai} %標楷體 from macOS %設定中文為系統上的字型，而英文不去更動，使用原TeX字型
+
+\XeTeXlinebreaklocale "zh"
+\XeTeXlinebreakskip = 0pt plus 1pt %這兩行一定要加，中文才能自動換行
+
+%\usepackage{CJKutf8}
+%\newcommand{\cntext}[1]{\begin{CJK*}{UTF8}{bkai}#1\end{CJK*}}
+
+% Set up fonts => no SimSun
+%\setCJKmainfont{SimSun} % or another Chinese font you prefer
+\setmainfont{Arial} % or another English font you prefer
+
+%----------------------------------------------------------------------------------------
+
+
+\begin{document}
+
+\begin{tikzpicture}[remember picture, overlay]
+    % Background
+    \fill[white] (current page.south west) rectangle (current page.north east);
+    
+    % Title
+    \node[anchor=north, text width=3in, align=center] at (current page.north) {
+        \hspace{0.2in}\textbf{\footnotesize 臺灣駐索馬利蘭醫療團}\\
+        \hspace{0.2in}\textbf{\footnotesize Taiwan Medical Mission}\\
+        \hspace{0.2in}\textbf{\footnotesize  in the Republic of Somaliland}
+    };
+    
+    % Flags
+    \node[anchor=north east] at (current page.north east) {\includesvg[height=0.4in]{Flag_of_the_Republic_of_China.svg}};
+    \node[anchor=north west] at (current page.north west) {\includesvg[height=0.4in]{Flag_of_Somaliland.svg}};
+    
+    % TMM Logo
+    \node[anchor=west] at (-0.3in, -0.8in) {\includesvg[width=0.65in]{TMM_logo.svg}};
+    
+    % Main Text
+    \node[anchor=west, text width=3.0in, align=left] at (0.4in, -1.0in) {
+        \scriptsize{Chief}\\
+        \textbf{\footnotesize{Dr. Jamal Tex LI-HSING CHI,} \scriptsize{D.D.S, Ph.D.}}\\
+        \scriptsize{Oral \& Maxillofacial Surgeon}\\
+        \scriptsize{Ph.D. of Medicine, Biomedical Informatics}\\
+        %\vspace{0.1in}
+        \hspace{0.6in}\footnotesize{團長 \normalsize{祁力行}}
+    };
+    
+    % Contact Info
+    \node[anchor=south west, text width=3.0in, align=left] at (current page.south west) {
+        %\vspace{0.1in}
+        \tiny{Whatsapp: +252(0)637772613}\\
+        %\vspace{0.03in}
+        \tiny{email: tmm2022sln@gmail.com}
+    };
+\end{tikzpicture}
+
+\end{document}
